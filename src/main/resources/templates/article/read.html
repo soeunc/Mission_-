@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Article</title>
+</head>
+<body>
+<h1>[[${article.title}]]</h1>
+<h2>내용</h2>[[${article.content}]]
+<br><br>
+<!--댓글 목록-->
+<h3>댓글</h3>
+<div th:unless="${commentList.isEmpty()}" th:each="comment : ${commentList}">
+  <!--댓글 삭제-->
+  <form th:action="@{/article/{id}/delete-comment(id=${comment.id})}" method="post">
+    <p>[[${comment.content}]]</p>
+    <label>
+      <input type="password" name="commentPW">
+    </label>
+    <button type="submit">댓글삭제</button>
+  </form>
+</div>
+<br>
+<hr>
+<!--댓글 추가-->
+<form th:action="@{/article/{id}/comment(id=${article.id})}" method="post">
+  댓글달기
+  <div class="container">
+    <label>
+      <input type="text" name="content" value="댓글을 작성하세요.">
+    </label>
+  </div>
+  <div>
+    <label>
+      댓글 PW: <input type="password" name="commentPW">
+    </label>
+  </div>
+  <input type="submit" value="댓글 작성"> <br>
+</form>
+<!--게시글 삭제-->
+<br>
+<form th:action="@{/article/{id}/delete(id=${article.id})}" method="post">
+  <label>
+    게시글 PW:
+    <input type="password" name="password">
+  </label>
+  <button type="submit">Delete</button>
+</form>
+<br>
+<!--뒤로 가기-->
+<a href="/boards">Back</a>
+<!--수정 하기-->
+<a th:href="@{/article/{id}/update-v(id=${article.id})}">Edit</a>
+</body>
+</html>

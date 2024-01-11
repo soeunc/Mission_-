@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+  <meta charset="UTF-8">
+  <title>Boards</title>
+</head>
+<body>
+<h1>Notice Board</h1>
+<div>
+  <h4><a href="/article">전체 게시글</a></h4>
+</div>
+<div th:unless="${boards.isEmpty()}" th:each="board: ${boards}">
+  <h3><a th:href="@{/boards/{boardId}/article(boardId=${board.id})}">[[${board.title}]]</a></h3>
+</div>
+</body>
+</html>

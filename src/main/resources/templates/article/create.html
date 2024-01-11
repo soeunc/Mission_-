@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<form action="/article/create" method="post">
+  <h1>Write an Article</h1>
+  <label>
+    <select name="board-id">
+      <option
+              th:each="board: ${boards}"
+              th:value="${board.id}"
+      >[[${board.title}]]
+      </option>
+    </select>
+  </label>
+  <div class="container"><br>
+    <label>
+      제목: <input type="text" name="title" value="제목을 입력하세요.">
+    </label>
+  </div>
+  <div>
+    <label>
+        내용 <br>
+      <input type="text" name="content" value="내용을 입력하세요.">
+    </label>
+  </div>
+  <div>
+    <label>
+      비밀번호: <input type="password" name="password">
+    </label>
+  </div>
+  <input type="submit"> <br>
+  <a href="/boards">Back</a>
+</form>
+</body>
+</html>

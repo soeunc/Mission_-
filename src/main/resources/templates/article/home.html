@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+  <meta charset="UTF-8">
+  <title>Article List</title>
+</head>
+<body>
+<!--전제 게시글 조회-->
+<h1>Article List</h1>
+<div th:unless="${articles.isEmpty()}" th:each="article : ${articles}">
+  <h3><a th:href="@{/article/{id}(id=${article.id})}">[[${article.title}]]</a></h3>
+</div>
+<a href="/article/create-v">작성</a><br>
+<a href="/boards">Back</a>
+</body>
+</html>
