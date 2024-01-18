@@ -12,7 +12,7 @@
 <h3>댓글</h3>
 <div th:unless="${commentList.isEmpty()}" th:each="comment : ${commentList}">
   <!--댓글 삭제-->
-  <form th:action="@{/article/{id}/delete-comment(id=${comment.id})}" method="post">
+  <form th:action="@{/article/{aId}/comment/{cId}/delete(aId=${article.id},cId=${comment.id})}" method="post">
     <p>[[${comment.content}]]</p>
     <label>
       <input type="password" name="commentPW">
