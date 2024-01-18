@@ -13,6 +13,15 @@ import java.util.Optional;
 public class BoardService {
     private final BoardRepository boardRepository;
 
+//    public static final String[] basicBoardTitle = {
+//        "자유 게시판",
+//        "개발 게시판",
+//        "일상 게시판",
+//        "사건사고 게시판"
+//    };
+
+
+
     public List<Board> readAll() {
        return boardRepository.findAll();
     }
